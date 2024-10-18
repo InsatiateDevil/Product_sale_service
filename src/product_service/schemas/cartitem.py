@@ -6,7 +6,7 @@ from pydantic import BaseModel, ConfigDict
 # CartItem schemas
 class CartItemBase(BaseModel):
     product_id: int
-    quantity: int | None = 1
+    quantity: int
 
 
 class CartItemUpdate(BaseModel):
@@ -20,7 +20,7 @@ class CartItem(CartItemBase):
 
 
 class CartItemCreate(CartItemBase):
-    id: int | None = None
+    product_id: int
     cart_id: int | None = None
 
 

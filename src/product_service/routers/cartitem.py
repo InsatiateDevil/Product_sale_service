@@ -80,6 +80,7 @@ async def update_cartitem(
 
     cart_item.quantity = cart_item_in.quantity
     await session.commit()
+    await session.refresh(cart_item)
     return cart_item
 
 

@@ -1,8 +1,7 @@
 services:
 
-
   db:
-    image: postgres:14-alpine
+    image: postgres:17-alpine
     restart: on-failure
     env_file:
       - .env

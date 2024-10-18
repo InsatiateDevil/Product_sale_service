@@ -20,12 +20,3 @@ class Base(DeclarativeBase):
     updated_at: Mapped[datetime] = mapped_column(server_default=func.now(),
                                                  server_onupdate=func.now(),
                                                  onupdate=datetime.now)
-
-    @classmethod
-    async def find_by_id(
-            cls, current_id: int,
-            db: AsyncSession = Depends(db_helper.scoped_session_dependency)
-    ):
-        query = select(cls).where(cls.id == current_id)
-        result = await db.execute(query)
-        return result.scalars().first()

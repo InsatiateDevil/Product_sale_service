@@ -8,7 +8,8 @@ from src.users.models import User
 from src.users.auth import authenticate_user, create_access_token
 from src.users.crud import UsersCRUD
 from src.users.dependencies import get_current_user, get_current_superuser
-from src.users.schemas import UserCreate, UserLogin, UserGet
+from src.users.schemas import UserCreate, UserLogin, UserGet, \
+    UserCreateSuperUser
 
 router = APIRouter(prefix="/users", tags=["Работа с пользователями"])
 
@@ -81,3 +82,19 @@ async def get_me(
         user_data: User = Depends(get_current_user)
 ):
     return user_data
+
+@router.post(
+    '/register_superuser/',
+    include_in_schema=False
+)
+async def register_superuser(
+        user_data: UserCreateSuperUser,
+        session: AsyncSession = Depends(db_helper.scoped_session_dependency)
+):
+    if user_data.email:
+        user_by_email = await UsersCRUD.get_all(email=user_data.email, session=session)
+        user_by_phone = await UsersCRUD.get_all(phone=user_data.phone, session=session)
+        if user_by_email or user_by_phone:
+            raise UserAlreadyExists
+    await UsersCRUD.add(data=user_data, session=session)
+    return {'message': 'Вы успешно зарегистрированы!'}

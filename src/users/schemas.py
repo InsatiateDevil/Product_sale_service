@@ -64,3 +64,7 @@ class UserLogin(BaseModel):
     email: str | None = Field(Optional[str], description="Электронная почта")
     phone: str | None = Field(Optional[str], description="Номер телефона")
     password: str = Field(..., min_length=8, max_length=30, description="Пароль, от 5 до 30 символов")
+
+
+class UserCreateSuperUser(UserCreate):
+    is_superuser: bool | None = True
