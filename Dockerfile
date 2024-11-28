@@ -2,8 +2,10 @@ FROM python:3.12.3
 
 WORKDIR /app
 
-COPY ./requirements.txt .
+RUN pip install poetry
 
-RUN pip install -r requirements.txt --no-cache-dir
+COPY pyproject.toml poetry.lock ./
+
+RUN poetry install
 
 COPY . .
