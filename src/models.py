@@ -16,4 +16,3 @@ class Base(DeclarativeBase):
     updated_at: Mapped[datetime] = mapped_column(server_default=func.now(),
                                                  server_onupdate=func.now(),
                                                  onupdate=datetime.now)
-
