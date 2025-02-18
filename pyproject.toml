@@ -13,6 +13,8 @@ asyncpg = "^0.30.0"
 alembic = "^1.14.0"
 python-jose = "^3.3.0"
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+flake8 = "^7.1.2"
+flake8-pyproject = "^1.2.3"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -22,3 +24,14 @@ pytest-cov = "^6.0.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.flake8]
+exclude = [
+    ".git",
+    "__pycache__",
+    "migration",
+    ".github"
+]
+ignore = [
+    "E501"
+]

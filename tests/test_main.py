@@ -230,6 +230,7 @@ async def test_update_cartitem(authenticated_client_fixture):
         'total_price': 30300
     }
 
+
 @pytest.mark.asyncio(loop_scope="session")
 async def test_delete_cartitem(authenticated_client_fixture):
     response = await authenticated_client_fixture.delete("/cart_item/102")

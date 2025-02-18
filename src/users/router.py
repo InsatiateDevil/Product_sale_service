@@ -83,6 +83,7 @@ async def get_me(
 ):
     return user_data
 
+
 @router.post(
     '/register_superuser/',
     include_in_schema=False

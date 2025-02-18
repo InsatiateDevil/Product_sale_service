@@ -1,11 +1,7 @@
 from datetime import datetime
 
-from fastapi import Depends
-from sqlalchemy import func, select
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, declared_attr
-
-from src.database import db_helper
 
 
 class Base(DeclarativeBase):
@@ -20,3 +16,4 @@ class Base(DeclarativeBase):
     updated_at: Mapped[datetime] = mapped_column(server_default=func.now(),
                                                  server_onupdate=func.now(),
                                                  onupdate=datetime.now)
+

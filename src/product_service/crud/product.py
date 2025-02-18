@@ -16,7 +16,7 @@ class ProductCRUD(BaseCRUD):
             data_id: int,
             session: AsyncSession,
     ):
-        query = select(cls.model).where(cls.model.id==data_id, cls.model.is_active==True)
+        query = select(cls.model).where(cls.model.id == data_id, cls.model.is_active)
         obj = await session.execute(query)
         obj = obj.scalars().first()
         if obj is None:
