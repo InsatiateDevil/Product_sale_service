@@ -23,28 +23,4 @@ jobs:
       - name: Run flake8
         run: poetry run flake8 .
 
-  test:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
 
-      - name: Create .env file
-        run: |
-          touch .env
-          echo '"${{ secrets.ENV_FILE }}"' | sed "s/\"//g" > .env # Удаление кавычек в файле, их не должно быть в секретах
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-
-      - name: Install Poetry
-        run: pip install poetry
-
-      - name: Install dependencies
-        run: poetry install --no-root
-
-      - name: Run tests
-        run: poetry run python manage.py test

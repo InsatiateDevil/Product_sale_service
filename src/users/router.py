@@ -4,10 +4,10 @@ from starlette.responses import Response
 
 from src.database import db_helper
 from src.exceptions import UserAlreadyExists, IncorrectEmailOrPassword
-from src.users.models import User
 from src.users.auth import authenticate_user, create_access_token
 from src.users.crud import UsersCRUD
 from src.users.dependencies import get_current_user, get_current_superuser
+from src.users.models import User
 from src.users.schemas import UserCreate, UserLogin, UserGet, \
     UserCreateSuperUser
 

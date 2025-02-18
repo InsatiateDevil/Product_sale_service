@@ -4,8 +4,8 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.database import db_helper
-from src.product_service.crud.cartitem import CartItemCRUD
 from src.product_service.crud.cart import CartCRUD
+from src.product_service.crud.cartitem import CartItemCRUD
 from src.product_service.utils import get_cart_price
 from src.users.dependencies import get_current_user
 from src.users.models import User

@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+
 from src.product_service.schemas.cartitem import CartItem
 
 

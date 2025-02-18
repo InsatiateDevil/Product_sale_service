@@ -9,7 +9,6 @@ from src.users.dependencies import get_current_user, get_current_superuser
 from src.users.models import User
 from src.users.schemas import UserGet
 
-
 router = APIRouter(prefix='/products', tags=["Products"])
 
 
